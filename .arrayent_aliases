@@ -1,0 +1,74 @@
+### Arrayent Aliases ###
+
+alias psj="ps ax | grep \"java\""
+
+# SSH Aliases
+alias sshwebswitch01='ssh andrew.harasta@172.20.1.57'
+alias sshwebswitch02='ssh andrew.harasta@172.20.1.58'
+alias sshwebswitch03='ssh andrew.harasta@172.20.1.59'
+alias jumphost='ssh andrew.harasta@52.27.99.63'
+
+# V3 External API Aliases
+alias api='cd /Users/andrew.harasta/dev/external-api/rest-api'
+
+# Redis Aliases
+alias startredis='cd /Users/andrew.harasta/redis/redis-3.0.7/src; ./redis-server'
+
+# Cassandra Aliases
+alias startcass='cd /Users/andrew.harasta/cassandra/dse-3.1.6/bin; ./dse cassandra'
+alias cqlsh='cd /Users/andrew.harasta/cassandra/dse-3.1.6/bin; ./cqlsh -C'
+alias cqlshdev='cqlsh 172.20.1.173'
+
+# Usergrid Aliases
+alias startugtom='cd /Users/andrew.harasta/Library/Tomcat/UsergridInstance; ./startup-usergrid.sh; tail -f logs/catalina.out;'
+alias stopugtom='cd /Users/andrew.harasta/Library/Tomcat/UsergridInstance; ./shutdown-usergrid.sh'
+alias startugportal='cd /Users/andrew.harasta/usergrid/1.0.2/apache-usergrid-1.0.2-incubating/portal; ./build.sh dev'
+alias getugtoken="curl 'http://localhost:8083/management/token?grant_type=password&username=admin&password=admin'"
+
+# Elasticsearch Aliases
+alias startes='cd /Users/andrew.harasta/Applications/ElasticSearch/elasticsearch-1.4.4/bin; ./elasticsearch'
+
+# Eclipse Aliases
+alias eclipselogs='cd /Users/andrew.harasta/Applications/Eclipse/eclipse/Eclipse.app/Contents/MacOS'
+
+# Grails-Apps Aliases
+alias cst='cd /Users/andrew.harasta/dev/grails-apps/com/arrayent/webAdminApp/customersupport'
+
+# Kibana Aliases
+alias startkibtom='cd /Users/andrew.harasta/Library/Tomcat/KibanaInstance; ./startup-kibana.sh'
+alias stopkibtom='cd /Users/andrew.harasta/Library/Tomcat/KibanaInstance; ./shutdown-kibana.sh'
+
+# Web Switch Aliases
+alias websw='cd /Users/andrew.harasta/dev/web-switch';
+
+# RbacManager
+alias startrbactom='cd /Users/andrew.harasta/Library/Tomcat/RbacManagerInstance; ./startup-rbacmanager.sh; tail -f logs/catalina.out;'
+alias stoprbactom='cd /Users/andrew.harasta/Library/Tomcat/RbacManagerInstance; ./shutdown-rbacmanager.sh'
+alias rbac='cd /Users/andrew.harasta/dev/web-switch/src/main/java/com/arrayent/webswitch/rbac'
+#alias buildrbac='cd /Users/andrew.harasta/dev/eclipse_workspace/RbacManager; mvn clean package; cp web.xml target/RbacManager-0.9/WEB-INF;'
+alias buildwebswitch='cd /Users/andrew.harasta/dev/web-switch; mvn clean package -Dmaven.test.skip=true'
+alias builddeployproxy='cd /Users/andrew.harasta/dev/web-switch/wso2proxy; mvn clean package -Dmaven.test.skip=true; yes | cp target/Wso2Proxy-1.1.0.jar ~/wso2esb/wso2esb-4.9.0/repository/components/lib/'
+alias builddeployrbac='/Users/andrew.harasta/Library/Tomcat/RbacManagerInstance/shutdown-rbacmanager.sh; cd /Users/andrew.harasta/dev/web-switch/rbacmanager; mvn clean install -DskipTests; yes | cp ./target/rbacmanager.war ~/Library/Tomcat/RbacManagerInstance/webapps; cd ~/Library/Tomcat/RbacManagerInstance/webapps/; rm -rf rbacmanager; /Users/andrew.harasta/Library/Tomcat/RbacManagerInstance/startup-rbacmanager.sh'
+alias buildrbact='cd /Users/andrew.harasta/dev/web-switch; mvn clean package'
+
+# WSO2_ESB Aliases
+alias wso2='cd /Users/andrew.harasta/wso2esb/wso2esb-4.9.0'
+alias startwso2='cd /Users/andrew.harasta/wso2esb/wso2esb-4.9.0/bin; ./wso2server.sh'
+alias wso2conf='cd /Users/andrew.harasta/wso2esb/wso2esb-4.9.0/repository/deployment/server/synapse-configs/default/proxy-services'
+alias wso2lib='cd /Users/andrew.harasta/wso2esb/wso2esb-4.9.0/repository/components/lib' 
+alias buildwso2=''
+
+# Portal Manager Aliases
+alias deploypm='rsync -vach /Users/andrew.harasta/dev/portal-manager/app/ /Users/andrew.harasta/Library/Tomcat/RbacManagerInstance/webapps/portal/'
+#buildportalmanager=''
+
+# ATF Aliases
+alias qa='cd /Users/andrew.harasta/dev/qa/'
+alias atf='cd /Users/andrew.harasta/dev/qa/AutomatedTestingFramework/'
+alias buildatf='cd /Users/andrew.harasta/dev/qa/AutomatedTestingFramework; mvn clean compile assembly:single; cp /Users/andrew.harasta/dev/qa/AutomatedTestingFramework/src/main/resources/atf.properties /Users/andrew.harasta/dev/qa/AutomatedTestingFramework/target/'
+alias systests='cd /Users/andrew.harasta/dev/qa/Cloud/API/v1/system_tests/'
+
+# AWS Aliases
+alias dwsaws='cd /Users/andrew.harasta/Documents/scripts/;./deploy_web_switch_to_single_node_ec2.sh'
+export AWS_KEY=/Users/andrew.harasta/Documents/keys/aws/aharasta-east.pem
+export AWS_INST=ec2-user@ec2-54-157-219-209.compute-1.amazonaws.com
