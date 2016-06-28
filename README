@@ -1,0 +1,2 @@
+To install Vundle for ViM:
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
