@@ -1,3 +1,6 @@
+" Requires Vundle and ViM 7.3.598+
+" Install Vundle: git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim & vi :PluginInstall
+" Install Latest ViM: http://stackoverflow.com/questions/7211820/update-built-in-vim-on-mac-os-x
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
