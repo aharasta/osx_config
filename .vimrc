@@ -1,6 +1,9 @@
 " Requires Vundle and ViM 7.3.598+
-" Install Vundle: git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim & vi :PluginInstall
-" Install Latest ViM: http://stackoverflow.com/questions/7211820/update-built-in-vim-on-mac-os-x
+" install Vundle: git clone https://github.com/VundleVim/Vundle.vim.git
+" ~/.vim/bundle/Vundle.vim & vi :PluginInstall
+" install latest ViM:
+" http://stackoverflow.com/questions/7211820/update-built-in-vim-on-mac-os-x
+
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -11,8 +14,6 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-" Install: git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-" vi :PluginInstall
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'flazz/vim-colorschemes'
@@ -27,23 +28,9 @@ Plugin 'Raimondi/delimitMate'
 
 Plugin 'Valloric/YouCompleteMe'
  
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
-" Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-" Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-" Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
+Plugin 'scrooloose/nerdtree'
 
+Plugin 'tpope/vim-surround'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -59,7 +46,10 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-" Tab and Spacing Configuration
+" Line numbers
+set nu
+
+" Tab and Spacing Configuration (4 for python, 6 for javascript)
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -72,5 +62,17 @@ set background=dark
 colorscheme brogrammer
 " colorscheme distinguished
 
+" Set filename to title for tabs/windows
+let &titlestring = @%
+set title
+
 " delimitMate config (use ctrl + C for auto block completion)
 imap <C-c> <CR><Esc>O
+
+" YouCompleteMe config
+let g:ycm_autoclose_preview_window_after_insertion=1
+
+" NERDTree Configuration
+nmap <leader>n :NERDTreeToggle<CR>
+let NERDTreeHighlightCursorline=1
+let NERDTreeIgnore = ['node_modules', '.tern-project']
