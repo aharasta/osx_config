@@ -1,7 +1,8 @@
 " Requires Vundle and ViM 7.3.598+
-" install Vundle: git clone https://github.com/VundleVim/Vundle.vim.git
-" ~/.vim/bundle/Vundle.vim & vi :PluginInstall
-" install latest ViM:
+" install Vundle: git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim 
+" vi => :PluginInstall
+" cli plugin install => vim +PluginInstall +qall
+" install latest ViM (note, some unix distros will have vi load with ViM, but vim package still needs to be added):
 " http://stackoverflow.com/questions/7211820/update-built-in-vim-on-mac-os-x
 
 set nocompatible              " be iMproved, required
