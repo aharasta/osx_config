@@ -1,5 +1,5 @@
 To install ViM on MacOS:
-brew install vim && brew install macvim
+brew install macvim
 
 To install Vundle for ViM:
 
