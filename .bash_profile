@@ -26,8 +26,7 @@
 
 #   Set Paths
 #   ------------------------------------------------------------
-    export PATH="$PATH:/usr/local/bin/"
-    export PATH="/usr/local/git/bin:/sw/bin/:/usr/local/bin:/usr/local/:/usr/local/sbin:/usr/local/mysql/bin:/Users/andrew.harasta/Applications/Terraform/:$PATH"
+    export PATH="/usr/local/git/bin:/usr/local/bin:/usr/local/sbin:$PATH"
 
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 #   ------------------------------------------------------------
@@ -45,10 +44,10 @@
 #    export CLICOLOR=1
 #    export LSCOLORS=ExFxBxDxCxegedabagacad
 
-export JAVA_HOME=$(/usr/libexec/java_home)
-setjdk() {
-  export JAVA_HOME=$(/usr/libexec/java_home -v $1)
-}
+#export JAVA_HOME=$(/usr/libexec/java_home)
+#setjdk() {
+#  export JAVA_HOME=$(/usr/libexec/java_home -v $1)
+#}
 export JAVA_OPTS="-Xmx2g -XX:MaxPermSize=4096M -XX:ReservedCodeCacheSize=1024m"
 export MAVEN_OPTS="-Xmx2g -XX:MaxPermSize=4096M -XX:ReservedCodeCacheSize=1024m"
 #exportdebugjavaopts() {
@@ -64,7 +63,8 @@ alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
 alias less='less -FSRXc'                    # Preferred 'less' implementation
-cd() { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
+cd() { builtin cd "$@"; ls -FGlAhp; }               # Always list directory contents upon 'cd'
+#cd() { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
 alias ..='cd ../'                           # Go back 1 directory level
 alias ...='cd ../../'                       # Go back 2 directory levels
@@ -321,9 +321,18 @@ alias starttomdebug='JPDA_TRANSPORT=dt_socket; export JPDA_TRANSPORT; JPDA_ADDRE
 #   then use: ~/Dev/Perl/randBytes 1048576 > 10MB.dat
 
 # MacVim Alias
-alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
+#alias vi='/Applications/MacVim.app/Contents/MacOS/Vim'
+alias vi='/usr/local/bin/vim'
 # Git Completion
 source ~/git-completion.bash
 alias gco='git co'
 alias gci='git ci'
 alias grb='git rb'
+alias gitl='git log --graph --abbrev-commit --decorate --date=relative --all'
+
+# Ruby
+source ~/.profile
+rubygrep() {
+  grep -r -i --include=*.rb $1 .
+}
+
