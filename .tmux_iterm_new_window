@@ -2,7 +2,7 @@
 #
 #
 
-session="iterm"
+session="iterm-$RANDOM"
 
 # set up tmux
 tmux start-server
@@ -24,7 +24,7 @@ tmux send-keys "source ~/.bash_profile;clear" C-m
 tmux selectp -t 1
 
 # return to main window
-tmux select-window -t $session:0
+#tmux select-window -t $session:0
 
 # Finished setup, attach to the tmux session!
 tmux attach-session -t $session
