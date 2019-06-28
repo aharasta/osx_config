@@ -251,9 +251,9 @@ sshaws() {
 
 alias mountReadWrite='/sbin/mount -uw /'    # mountReadWrite:   For use when booted into single-user
 
-#   cleanupDS:  Recursively delete .DS_Store files
+#   deleteDS:  Recursively delete .DS_Store files
 #   -------------------------------------------------------------------
-    alias cleanupDS="find . -type f -name '*.DS_Store' -ls -delete"
+    alias deleteDS="find . -type f -name '*.DS_Store' -ls -delete"
 
 #   finderShowHidden:   Show hidden files in Finder
 #   finderHideHidden:   Hide hidden files in Finder
