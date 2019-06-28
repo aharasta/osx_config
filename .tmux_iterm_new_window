@@ -1,6 +1,4 @@
 #!/bin/sh
-#
-#
 
 session="iterm-$RANDOM"
 
@@ -10,21 +8,18 @@ tmux start-server
 # create a new tmux session
 tmux new-session -d -s $session
 
-# Select pane 1, set dir to api, run vim
-tmux selectp -t 1 
+# Select first pane
+tmux selectp -t 0 
 tmux send-keys "source ~/.bash_profile;clear" C-m
 # Split window in half vertically
 tmux splitw -h -p 50
 
-# Select pane 2 
-tmux selectp -t 2
+# Select second pane
+tmux selectp -t 1
 tmux send-keys "source ~/.bash_profile;clear" C-m
 
-# Select pane 1
-tmux selectp -t 1
-
-# return to main window
-#tmux select-window -t $session:0
+# Select first pane
+tmux selectp -t 0
 
 # Finished setup, attach to the tmux session!
 tmux attach-session -t $session

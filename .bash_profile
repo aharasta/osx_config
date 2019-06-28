@@ -1,3 +1,4 @@
+export BASH_CONF='.bash_profile'
 #  ---------------------------------------------------------------------------
 #
 #  Description:  This file holds all my BASH configurations and aliases
@@ -26,11 +27,11 @@
 
 #   Set Paths
 #   ------------------------------------------------------------
-    export PATH="/usr/local/git/bin:/usr/local/bin:/usr/local/sbin:$PATH"
+    export PATH="/usr/local/git/bin:/usr/local/bin:/usr/local/sbin:$PATH:$HOME/.rvm/bin"
 
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 #   ------------------------------------------------------------
-    export EDITOR=/usr/bin/vim
+    export EDITOR=/usr/local/bin/vim
 
 #   Set default blocksize for ls, df, du
 #   from this: http://hints.macworld.com/comment.php?mode=view&cid=24491
@@ -63,8 +64,7 @@ alias mv='mv -iv'                           # Preferred 'mv' implementation
 alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
 alias ll='ls -FGlAhp'                       # Preferred 'ls' implementation
 alias less='less -FSRXc'                    # Preferred 'less' implementation
-cd() { builtin cd "$@"; ls -FGlAhp; }               # Always list directory contents upon 'cd'
-#cd() { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
+cd() { builtin cd "$@"; ll; }               # Always list directory contents upon 'cd'
 alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
 alias ..='cd ../'                           # Go back 1 directory level
 alias ...='cd ../../'                       # Go back 2 directory levels
@@ -81,6 +81,7 @@ alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable 
 alias show_options='shopt'                  # Show_options: display bash options settings
 alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
 alias cic='set completion-ignore-case On'   # cic:          Make tab-completion case-insensitive
+nkill () { pkill -f $1; }                   # kill process by partial name match
 
 # Git Aliases
 alias gits='git status'
@@ -330,9 +331,26 @@ alias gci='git ci'
 alias grb='git rb'
 alias gitl='git log --graph --abbrev-commit --decorate --date=relative --all'
 
-# Ruby
-source ~/.profile
-rubygrep() {
-  grep -r -i --include=*.rb $1 .
+# Tmux
+alias exitt='tmux kill-window'
+
+# Javascript
+jsgrep() {
+  grep -r -i -n --exclude-dir=bower_components --exclude-dir=node_modules --exclude-dir=vendor --exclude-dir=dist --include=*.js $1 .
 }
+
+# Ruby
+rbgrep() {
+  grep -r -i -n --include=*.rb $1 .
+}
+
+# Ngrok
+alias ngrok='/Users/andrewharasta/ngrok'
+
+# Woflow
+alias api='cd ~/dev/woflow-v7-api'
+alias apiinit='/Users/andrewharasta/.tmux_api_init'
+alias dash='cd ~/dev/woflow-v7-dashboard-new'
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
