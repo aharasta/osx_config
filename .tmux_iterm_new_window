@@ -2,25 +2,23 @@
 
 session="iterm-$RANDOM"
 
-# set up tmux
 tmux start-server
 
-# create a new tmux session
 tmux new-session -d -s $session
 
-# Select first pane
 tmux selectp -t 0 
-tmux send-keys "source ~/.bash_profile;clear" C-m
-# Split window in half vertically
+tmux send-keys "source ~/.bash_profile; clear;" C-m
 tmux splitw -h -p 50
 
-# Select second pane
 tmux selectp -t 1
-tmux send-keys "source ~/.bash_profile;clear" C-m
+tmux send-keys "source ~/.bash_profile; clear;" C-m
 
-# Select first pane
 tmux selectp -t 0
 
-# Finished setup, attach to the tmux session!
-tmux attach-session -t $session
+# Pane layout:
+#       |
+#   0   |   1
+#       |   
+#       |
 
+tmux attach-session -t $session

@@ -1,0 +1,46 @@
+#!/bin/sh
+
+# Script assumes iTerm session has already been created! See .tmux_iterm_new_window
+session="woflow-app"
+itermSession="$(tmux display-message -p '#S')"
+
+# Allows script to take in branch name or default to master
+branch=${1:-master}
+
+tmux rename-session -t $itermSession $session
+
+# Launch database in new window
+tmux new-window -t $session:1 -n postgres
+tmux send-keys "startdb" C-m 
+
+tmux select-window -t $session:0
+
+# Setup panes
+tmux selectp -t 1
+tmux splitw -v -p 50
+tmux selectp -t 0
+tmux splitw -v -p 50
+
+# Pane layout:
+#       |
+#   0   |   2
+#-------|--------
+#   1   |   3
+#       |
+
+# Start redis-server
+tmux selectp -t 2
+tmux send-keys "api; redis-server" C-m 
+
+# Start sidekiq
+tmux selectp -t 3
+tmux send-keys "api; sidekiq" C-m 
+
+# Start rails server
+tmux selectp -t 0
+tmux send-keys "api; git checkout $branch; rails server" C-m 
+
+# Start ember server
+tmux selectp -t 1
+tmux send-keys "dash; git checkout $branch; ember server" C-m 
+

@@ -1,0 +1,15 @@
+#!/bin/sh
+
+session="woflow-dash"
+itermSession="$(tmux display-message -p '#S')"
+
+# Rename iterm session to new session
+tmux rename-session -t $itermSession $session
+
+tmux selectp -t 0 
+tmux send-keys "source ~/.bash_profile; clear" C-m
+tmux send-keys "dash" C-m 
+tmux send-keys "ember serve" C-m 
+
+# Finished setup, attach to the tmux session!
+tmux attach-session -t $session

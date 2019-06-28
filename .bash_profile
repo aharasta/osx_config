@@ -347,10 +347,15 @@ rbgrep() {
 # Ngrok
 alias ngrok='/Users/andrewharasta/ngrok'
 
+# Postgres
+alias startdb='postgres -D /Users/andrewharasta/Library/Application\ Support/Postgres/var-9.6/'
+
 # Woflow
 alias api='cd ~/dev/woflow-v7-api'
-alias apiinit='/Users/andrewharasta/.tmux_api_init'
 alias dash='cd ~/dev/woflow-v7-dashboard-new'
+alias apiinit='/Users/andrewharasta/.tmux_api_init'
+alias dashstart='/Users/andrewharasta/.tmux_dash_startup'
+startwoflow () { /Users/andrewharasta/.tmux_woflow_startup $1; }
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
