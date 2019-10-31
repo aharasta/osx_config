@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script assumes iTerm session has already been created! See .tmux_iterm_new_window
 session="woflow-app"

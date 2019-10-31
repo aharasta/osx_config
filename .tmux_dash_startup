@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 session="woflow-dash"
 itermSession="$(tmux display-message -p '#S')"
