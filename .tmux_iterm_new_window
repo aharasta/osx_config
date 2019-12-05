@@ -7,6 +7,8 @@ tmux start-server
 tmux new-session -d -s $session
 
 tmux selectp -t 0 
+# IMPORTANT: This sets iterm and tmux bash environment to latest bash defined in PATH
+tmux send-keys "bash" C-m
 tmux send-keys "source ~/.bash_profile" C-m
 tmux send-keys "clear" C-m
 tmux splitw -h -p 50
