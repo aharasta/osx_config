@@ -8,6 +8,7 @@ tmux new-session -d -s $session
 
 tmux selectp -t 0 
 # IMPORTANT: This sets iterm and tmux bash environment to latest bash defined in PATH
+# This shouldn't be necessary with use of chsh -s but for some reason that isn't working...
 tmux send-keys "bash" C-m
 tmux send-keys "source ~/.bash_profile" C-m
 tmux send-keys "clear" C-m
